@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+pillow
+pytesseract
+pypdf
+python-dotenv
+openai
+anthropic
+langgraph
+langchain
+langchain-openai
+langchain-google-genai
+langchain-community
+langchain-ollama
