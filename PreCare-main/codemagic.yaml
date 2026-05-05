@@ -1,0 +1,31 @@
+workflows:
+  ios-build:
+    name: iOS Build
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    environment:
+      # Replace with your app’s bundle identifier
+      vars:
+        BUNDLE_ID: "com.jayanth.precare"
+
+      ios_signing:
+        # For sharable .ipa without App Store / TestFlight
+        distribution_type: ad_hoc
+        bundle_identifier: "com.jayanth.precare"
+
+    scripts:
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install
+          cd ..
+
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace "ios/PreCare.xcworkspace" \
+            --scheme "PreCare"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
